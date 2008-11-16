@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081109041829) do
+ActiveRecord::Schema.define(:version => 20081116201850) do
 
   create_table "products", :force => true do |t|
     t.string   "name",                                                                    :null => false
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 20081109041829) do
     t.integer  "quantity",    :limit => 11,                                :default => 0, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image_url"
   end
 
 end

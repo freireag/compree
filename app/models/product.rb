@@ -1,4 +1,6 @@
 class Product < ActiveRecord::Base
+  cattr_accessor :default_image_url
+  
   validates_numericality_of :price, :greater_than => 0
   validates_numericality_of :quantity, :greater_than_or_equal_to => 0, :only_integer => true
   
