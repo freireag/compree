@@ -13,7 +13,7 @@ class PostsControllerTest < Test::Unit::TestCase
     @response   = ActionController::TestResponse.new
     @post       = Post.find(:first)
   end
-  
+
   # autodetects the :controller
   should_route :get,    '/posts',     :action => :index
   # explicitly specify :controller
@@ -24,7 +24,7 @@ class PostsControllerTest < Test::Unit::TestCase
   should_route :put,    '/posts/1',   :action => :update, :id => "1"
   should_route :delete, '/posts/1',   :action => :destroy, :id => 1
   should_route :get,    '/posts/new', :action => :new
-  
+
   # Test the nested routes
   should_route :get,    '/users/5/posts',     :action => :index, :user_id => 5
   should_route :post,   '/users/5/posts',     :action => :create, :user_id => 5

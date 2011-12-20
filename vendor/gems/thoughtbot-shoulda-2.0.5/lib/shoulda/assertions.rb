@@ -27,7 +27,7 @@ module ThoughtBot # :nodoc:
         case x
         when Regexp
           assert(collection.detect { |e| e =~ x }, msg)
-        else         
+        else
           assert(collection.include?(x), msg)
         end
       end
@@ -40,7 +40,7 @@ module ThoughtBot # :nodoc:
         case x
         when Regexp
           assert(!collection.detect { |e| e =~ x }, msg)
-        else         
+        else
           assert(!collection.include?(x), msg)
         end
       end

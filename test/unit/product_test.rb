@@ -3,14 +3,14 @@ require 'test_helper'
 class ProductTest < ActiveSupport::TestCase
   context "given an existing record" do
     fixtures :all
-    
+
     should_have_db_columns :id, :name, :description, :price, :quantity
     should_have_db_column :name, :type => "string", :null => false
     should_have_db_column :price, :type => "decimal", :null => false, :scale => 2
     should_have_db_column :quantity, :type => "integer", :default => 0, :null => false
     should_have_db_column :image_url, :type => "string"
 
-    should_have_instance_methods :name, :name=, :description, :description=, :price, :price=, :quantity, :quantity=, :image_url, 
+    should_have_instance_methods :name, :name=, :description, :description=, :price, :price=, :quantity, :quantity=, :image_url,
       :image_url=
     should_have_class_methods :default_image_url, :default_image_url=
 

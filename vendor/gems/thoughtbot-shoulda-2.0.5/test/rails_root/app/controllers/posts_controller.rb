@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_filter :ensure_logged_in
   before_filter :load_user
-  
+
   def index
     @posts = @user.posts
 
@@ -68,17 +68,17 @@ class PostsController < ApplicationController
   def destroy
     @post = @user.posts.find(params[:id])
     @post.destroy
-    
+
     flash[:notice] = "Post was removed"
-    
+
     respond_to do |format|
       format.html { redirect_to user_posts_url(@post.user) }
       format.xml  { head :ok }
     end
   end
-  
+
   private
-  
+
   def load_user
     @user = User.find(params[:user_id])
   end
