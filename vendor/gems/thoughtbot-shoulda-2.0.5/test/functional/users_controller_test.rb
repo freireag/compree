@@ -13,7 +13,7 @@ class UsersControllerTest < Test::Unit::TestCase
     @response   = ActionController::TestResponse.new
     @user       = User.find(:first)
   end
-  
+
   should_filter_params :ssn
 
   should_be_restful do |resource|

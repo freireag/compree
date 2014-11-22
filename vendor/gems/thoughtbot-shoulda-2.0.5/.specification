@@ -1,37 +1,37 @@
---- !ruby/object:Gem::Specification 
+--- !ruby/object:Gem::Specification
 name: thoughtbot-shoulda
-version: !ruby/object:Gem::Version 
+version: !ruby/object:Gem::Version
   version: 2.0.5
 platform: ruby
-authors: 
+authors:
 - Tammer Saleh
-autorequire: 
+autorequire:
 bindir: bin
 cert_chain: []
 
 date: 2008-10-15 00:00:00 -03:00
 default_executable: convert_to_should_syntax
-dependencies: 
-- !ruby/object:Gem::Dependency 
+dependencies:
+- !ruby/object:Gem::Dependency
   name: activesupport
   type: :runtime
-  version_requirement: 
-  version_requirements: !ruby/object:Gem::Requirement 
-    requirements: 
+  version_requirement:
+  version_requirements: !ruby/object:Gem::Requirement
+    requirements:
     - - ">="
-      - !ruby/object:Gem::Version 
+      - !ruby/object:Gem::Version
         version: 2.0.0
-    version: 
-description: 
+    version:
+description:
 email: tsaleh@thoughtbot.com
-executables: 
+executables:
 - convert_to_should_syntax
 extensions: []
 
-extra_rdoc_files: 
+extra_rdoc_files:
 - README.rdoc
 - CONTRIBUTION_GUIDELINES.rdoc
-files: 
+files:
 - CONTRIBUTION_GUIDELINES.rdoc
 - MIT-LICENSE
 - Rakefile
@@ -167,32 +167,32 @@ files:
 - test/unit/user_test.rb
 has_rdoc: true
 homepage: http://thoughtbot.com/projects/shoulda
-post_install_message: 
-rdoc_options: 
+post_install_message:
+rdoc_options:
 - --line-numbers
 - --inline-source
 - --main
 - README.rdoc
-require_paths: 
+require_paths:
 - bin
 - lib
-required_ruby_version: !ruby/object:Gem::Requirement 
-  requirements: 
+required_ruby_version: !ruby/object:Gem::Requirement
+  requirements:
   - - ">="
-    - !ruby/object:Gem::Version 
+    - !ruby/object:Gem::Version
       version: "0"
-  version: 
-required_rubygems_version: !ruby/object:Gem::Requirement 
-  requirements: 
+  version:
+required_rubygems_version: !ruby/object:Gem::Requirement
+  requirements:
   - - ">="
-    - !ruby/object:Gem::Version 
+    - !ruby/object:Gem::Version
       version: "0"
-  version: 
+  version:
 requirements: []
 
 rubyforge_project: shoulda
 rubygems_version: 1.2.0
-signing_key: 
+signing_key:
 specification_version: 2
 summary: Making tests easy on the fingers and eyes
 test_files: []

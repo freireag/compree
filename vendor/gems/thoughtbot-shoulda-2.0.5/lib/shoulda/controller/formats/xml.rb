@@ -1,13 +1,13 @@
-module ThoughtBot # :nodoc: 
-  module Shoulda # :nodoc: 
+module ThoughtBot # :nodoc:
+  module Shoulda # :nodoc:
     module Controller # :nodoc:
-      module XML 
+      module XML
         def self.included(other) #:nodoc:
           other.class_eval do
             extend ThoughtBot::Shoulda::Controller::XML::ClassMethods
           end
         end
-  
+
         module ClassMethods
           # Macro that creates a test asserting that the controller responded with an XML content-type
           # and that the XML contains +<name/>+ as the root element.
@@ -15,7 +15,7 @@ module ThoughtBot # :nodoc:
             should "have ContentType set to 'application/xml'" do
               assert_xml_response
             end
-            
+
             if name
               should "return <#{name}/> as the root element" do
                 body = @response.body.first(100).map {|l| "  #{l}"}
@@ -24,23 +24,23 @@ module ThoughtBot # :nodoc:
             end
           end
           alias should_respond_with_xml should_respond_with_xml_for
-          
+
           protected
-                    
+
           def make_show_xml_tests(res) # :nodoc:
             context "on GET to #{controller_name_from_class}#show as xml" do
               setup do
                 request_xml
                 record = get_existing_record(res)
                 parent_params = make_parent_params(res, record)
-                get :show, parent_params.merge({ res.identifier => record.to_param })          
+                get :show, parent_params.merge({ res.identifier => record.to_param })
               end
 
               if res.denied.actions.include?(:show)
                 should_not_assign_to res.object
                 should_respond_with 401
               else
-                should_assign_to res.object          
+                should_assign_to res.object
                 should_respond_with :success
                 should_respond_with_xml_for res.object
               end
@@ -60,12 +60,12 @@ module ThoughtBot # :nodoc:
               setup do
                 request_xml
                 parent_params = make_parent_params(res)
-                get(:index, parent_params)          
+                get(:index, parent_params)
               end
 
               if res.denied.actions.include?(:index)
                 should_not_assign_to res.object.to_s.pluralize
-                should_respond_with 401          
+                should_respond_with 401
               else
                 should_respond_with :success
                 should_respond_with_xml_for res.object.to_s.pluralize
@@ -82,10 +82,10 @@ module ThoughtBot # :nodoc:
                 parent_params = make_parent_params(res, @record)
                 delete :destroy, parent_params.merge({ res.identifier => @record.to_param })
               end
-        
+
               if res.denied.actions.include?(:destroy)
                 should_respond_with 401
-          
+
                 should "not destroy record" do
                   assert @record.reload
                 end
@@ -107,21 +107,21 @@ module ThoughtBot # :nodoc:
                 @count = res.klass.count
                 post :create, parent_params.merge(res.object => res.create.params)
               end
-        
+
               if res.denied.actions.include?(:create)
                 should_respond_with 401
                 should_not_assign_to res.object
-          
+
                 should "not create new record" do
                   assert_equal @count, res.klass.count
-                end          
+                end
               else
                 should_assign_to res.object
 
                 should "not have errors on @#{res.object}" do
-                  assert_equal [], pretty_error_messages(assigns(res.object)), "@#{res.object} has errors:"            
+                  assert_equal [], pretty_error_messages(assigns(res.object)), "@#{res.object} has errors:"
                 end
-              end      
+              end
             end
           end
 
@@ -152,18 +152,18 @@ module ThoughtBot # :nodoc:
         def request_xml
           @request.accept = "application/xml"
         end
-        
+
         # Asserts that the controller's response was 'application/xml'
         def assert_xml_response
           content_type = (@response.headers["Content-Type"] || @response.headers["type"]).to_s
           regex = %r{\bapplication/xml\b}
 
           msg = "Content Type '#{content_type.inspect}' doesn't match '#{regex.inspect}'\n"
-          msg += "Body: #{@response.body.first(100).chomp} ..." 
+          msg += "Body: #{@response.body.first(100).chomp} ..."
 
           assert_match regex, content_type, msg
         end
-        
+
       end
     end
   end
